@@ -1,0 +1,31 @@
+Entregar na próxima aula (13/04/2016):
+
+1 - Tela de Login enviando via Post para outro arquivo
+
+2 - Conexão com o Banco de Dados (utilizando ODBC):
+
+Função ODBC para conexão com Banco de Dados
+http://php.net/manual/pt_BR/function.odbc-data-source.php
+
+Função Execute ODBC para Execução de Query's junto à base
+http://php.net/manual/pt_BR/function.odbc-execute.php
+
+Função ODBC p/ Obter as Tabelas da Base de dados
+http://php.net/manual/pt_BR/function.odbc-tables.php
+
+Função ODBC p/ Obter as Colunas de uma Tabela
+http://php.net/manual/pt_BR/function.odbc-fetch-object.php
+
+
+3 - Validação dos dados recebidos no Formulário (jogar em Sessão) e direcionar para uma tela com um Menu Horizontal no topo.
+Usaremos as sessões Definidas com nomes exatamente como especificado abaixo:
+$_SESSION['showMenu'];
+$_SESSION['codProfessor'];
+$_SESSION['tipoProfessor'];
+$_SESSION['nomeProfessor'];
+
+
+Referências exemplo do Menu Horizontal:
+http://codigofonte.uol.com.br/codigos/menu-horizontal-simples
+http://www.linhadecodigo.com.br/artigo/3474/menu-em-css-menu-dropdown-horizontal-com-html5-e-css3.aspx
+http://tableless.com.br/criando-um-menu-horizontal-com-css
