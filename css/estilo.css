@@ -1,14 +1,11 @@
 @charset UTF-8;
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-
 @font-face{
 	font-family: 'Roboto', sans-serif;
 }
 
 *{
-	padding-right: auto;
-	padding-left: auto;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -20,16 +17,20 @@ body{
 	font-size: 14px;
 }
 
+*.page-header {
+    border-bottom: 0px solid;
+}
 
-
-
+*.row {
+    border-bottom: 0px solid;
+}
 
 .header_pages {
-    background-color: white;
-    color:#385965;
-    text-align:center;
+	background-color: white;
+	color:#385965;
+	text-align:center;
 	font-size: 26px;
-    padding:5px;
+	padding:5px;
 }
 
 .body_presentation {
@@ -40,51 +41,68 @@ body{
 
 
  
- /*    MENU  TOPO  */
-.menu{
-	list-style: none;
-	border: 1px solid #c0c0c0;
-	/* [disabled]float: left; */
+ /*  MENU  TOPO  */
+.navbar-inverse .navbar-brand {
+    color: #B7C3C0;
+}
+
+.navbar-inverse {
+	background-color: #385965;
+	border-color: #385965;
+}
+
+.navbar-inverse .navbar-toggle {
+	background-color: #385965;
+	border-color: #B7C3C0;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #7C8C88;
 }
 
 
-.menu li{
-	position:relative;
-	float:left;
-	border-right:1px solid #c0c0c0;
+/*        LISTA PRINCIPAL       */
+.nav li {
+	text-align: center;
+	/*min-width: 160px; */
+}	
+/*       ANCORA DA LISTA PRINCIPAL SEM CLIQUE       */
+.navbar-inverse .navbar-nav>li>a {
+	color: #B7C3C0;
 }
 
-.menu li a{
-	color:#333; 
-	text-decoration:none; 
-	padding:5px 10px; 
-	display:block;
+/*   ANCORA DA LISTA PRINCIPAL CLICADO  */
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: #FFF;
 }
- 
-.menu li a:hover{
-	background:#333; 
-	color:#fff; 
-	-moz-box-shadow:0 3px 10px 0 #CCC; 
-	-webkit-box-shadow:0 3px 10px 0 #ccc; 
-	text-shadow:0px 0px 5px #fff; 
+/*   ITEM DA LISTA CLICADO | MOUSE EM CIMA       */
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+	color: #385965;
+	background-color: #B7C3C0;
+} 
+
+/*        Lista filha do DropDown Clicadoo       */
+.dropdown.open li {
+	background-color: #B7C3C0;
 }
-
-
-.menu li  ul{
-	position:absolute;
-	top:25px;
-	left:0;
-	background-color:#fff;
-	display:none;
-}  
-
-
-.menu li:hover ul, .menu li.over ul{
-	display:block;
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    color: #385965;
 }
 
 
-*p{
-    border:2px solid #ffffff;
-    background-color:white;  
+
+/*   REDUZIDO  */
+.navbar-inverse:visited .navbar-toggle:hover .icon-bar {
+    background-color: #385965;
+}
+
+.navbar-inverse:visited .navbar-toggle .icon-bar {
+    background-color: #385965;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+   background-color: #B7C3C0;
+}
+.navbar-inverse .navbar-ex1-collapse .collapsed .navbar-toggle .icon-bar {
+    background-color: #B7C3C0;
 }
