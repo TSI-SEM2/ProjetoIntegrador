@@ -1,8 +1,5 @@
 <?php 
 session_start();
-
 session_destroy();
-
-header("location: ../professor/login.php")
-
+header("location: ../professor/index.php")
 ?>
