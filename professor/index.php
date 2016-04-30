@@ -34,14 +34,32 @@ include "../config/conecta.php";
 
 <div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-8 content-center">
   
 	<?php
 		if ($_SESSION['logado'] != TRUE){
 			require "login.php";
 		} else {
-			echo "OK";
+			
+			//echo "OK";
+			
+			echo "<div name='tab' content-center>";
+
+				echo "<div class='row>
+								<div class='col-md-4'>
+									<a class='btn btn-default' href='index.php?a=ok' role='button'> Mostrar Dados </a>
+									<a class='btn btn-default' href='index.php?b=ok' role='button'> Inserir Novo </a>
+								</div>
+							</div><br>";
+
+			if ($_GET['a'] == 'ok') {
+				require "../func/list.php";
+			} elseif ($_GET['b'] == 'ok') {
+				require "../func/incluir.php";
+			}
+			echo "</div>";
 		}
+		
 	?>
   
   </div>

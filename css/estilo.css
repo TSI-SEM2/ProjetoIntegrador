@@ -9,6 +9,10 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+/* div {
+	border: 1px solid #BBB ;
+} */
+
 p.alert{
 	color: red;
 }
@@ -33,10 +37,10 @@ body{
 	padding:5px;
 }
 
-.body_presentation {
-    width:350px;
-    float:left;
-    padding:10px;	 	 
+.content-center {
+	padding-top:45px;
+	padding-bottom:45px;
+	text-align: center;
 }
 
 
