@@ -18,7 +18,7 @@ if(isset($_POST['btnSubmit'])){
 
 	$insere_ok = "Registro inserido com sucesso.";
 	$inserelinha = odbc_exec($conexao, $query);
-	header("Location:".$_SERVER['DOCUMENT_ROOT']."/professor/usuarios/lista.php?retorno=".$insere_ok);
+	header("Location: /professor/usuarios/lista.php?retorno=".$insere_ok);
 	exit;
 
 }
