@@ -76,12 +76,12 @@ if(isset($_POST['btnSubmit'])){
 					<div class="radio">
 					<label class="col-sm-2 control-label">
 						<input type="radio" name="tipoacesso" id="optionsRadios1" value="A" 
-									 <?php if ($tipo = "A") echo "checked"; ?>> Administrador	</label>
+									 <?php if ($tipo == "A") echo "checked"; ?>> Administrador	</label>
 					</div>
 					<div class="radio">
 					<label class="col-sm-2 control-label">
 						<input type="radio" name="tipoacesso" id="optionsRadios2" value="P" 
-									 <?php if ($tipo = "P") echo "checked"; ?> > Professor </label>
+									 <?php if ($tipo == "P") echo "checked"; ?> > Professor </label>
 					</div>
 				</div>
 			</div>
