@@ -32,10 +32,6 @@ if (isset($_GET['cod'])){
 	</div>
 </div>
    
-<?php
 
-   require "../../inc/rodape.html";
-
-?>
 </body>
 </html>

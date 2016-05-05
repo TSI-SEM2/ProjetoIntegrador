@@ -23,15 +23,26 @@ require "../../inc/cabecalho.html";
         <th>Email</th>
         <th>Id Senac</th>
         <th>Tipo De Acesso</th>
-      </thead>
+			</thead>
       <?php
 
         $query = "SELECT * FROM Professor";
         if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
           while( $row = odbc_fetch_array($res) ) {
-            echo "<tr>";
+            if($row['email'] == 'claro@usp.br'){//correcao do erro de excluir o adm principal
+							echo "<tr>
+										<td>Admin Principal</td>
+										<td>Admin</td>
+        						<td>claro@usp.br</td>
+										<td>000000</td>
+										<td>A</td>
+										</tr>";
+							continue;
+						}
+						echo "<tr>";
             
 						echo "<td>
+						
 						<a href='edita.php?cod=".$row[codProfessor]."'<button type='button' class='btn btn-primary btn-sm'>Editar</button></a>
 						<a href='remove.php?cod=".$row[codProfessor]."'<button type='button' class='btn btn-danger btn-sm'>Apagar</button></a>
 						</td>";  
@@ -49,9 +60,6 @@ require "../../inc/cabecalho.html";
   </div>
 </div>
 
-<?php
-require "../../inc/rodape.html";
-?>
+
 
 </body>
-</html>

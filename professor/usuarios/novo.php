@@ -76,10 +76,6 @@ if(isset($_POST['btnSubmit'])){
   </div>
 </div>
 
-<?php
 
-   require "../../inc/rodape.html";
-
-?>
 </body>
 </html>

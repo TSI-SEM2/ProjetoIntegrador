@@ -10,13 +10,12 @@ require "../inc/cabecalho.html";
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
+		
 		Comming soon
+		
   </div>
 </div>
 
-<?php
- require "../inc/rodape.html";
-?>
 
 </body>
 </html>
