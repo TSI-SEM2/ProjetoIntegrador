@@ -1,12 +1,16 @@
 <?php   
-session_start();
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+if(!isset($_SESSION)) 
+	{ 
+		session_start(); 
+	} 
 
 if (!$_SESSION['showMenu']){
 	header("Location: /professor/login.php");
 }
 if (isset($_SESSION['codProfessor'])) {	?>
 <body>
-<?php  
+<?php
 	if (isset($_SESSION['showMenu'])) {
 		if ($_SESSION['showMenu']) {
 //essa declaração inicial verificamos se o usuário está autenticado .. SE AUTENTICADO , verá o Menu, senão redirecionado à tela de Login.php
