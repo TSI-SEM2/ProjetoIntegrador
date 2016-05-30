@@ -5,18 +5,21 @@ require "../inc/cabecalho.html";
 require "../inc/menu.php";
 
 if (isset($_GET['cod'])){
+	// Verifica nas tabelas relacionadas SE existe alguma Chave extrangeira Replicada na TABELA = QUESTAO
+	$query = " SELECT codTipoQuestao FROM Questao WHERE codTipoQuestao = '".$_GET['cod']."'; ";
+	$res = odbc_exec($conexao,$query);
+	if (odbc_num_rows($res) > 0 ){
+		$refmsg = 3;
+		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+		exit;
+	}
 	
 	$query = "DELETE FROM TipoQuestao WHERE codTipoQuestao = '".$_GET['cod']."';" ;
-	
-	//exit($query);
-	
 	if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
-		// $row = odbc_fetch_array($res);	
-		$removido = "Removido o ID <b>".$_GET['cod']."</b>";
+		$refmsg = 2;
 		$atualizalinha = odbc_exec($conexao, $query);
-		header("Location: /tipoQuestao/lista.php?retorno=".$removido);
-	exit;	
-
+		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+		exit;
 	}
 }
 

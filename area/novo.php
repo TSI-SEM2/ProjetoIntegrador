@@ -2,7 +2,6 @@
 session_start(); 
 include "../config/conecta.php";
 require "../inc/cabecalho.html";
-
 require "../inc/menu.php";
 
 if(isset($_POST['btnSubmit'])){
@@ -11,20 +10,19 @@ if(isset($_POST['btnSubmit'])){
   $descricao = $_POST['descricao'] ;
  	
   $query = "INSERT INTO Area (descricao) VALUES ('$descricao');" ;
-	//exit($query);
-	$insere_ok = "Registro inserido com sucesso.";
-	$inserelinha = odbc_exec($conexao, $query);
-	header("Location: /area/lista.php?retorno=".$insere_ok);
+
+	$refmsg = 1;
+	$atualizalinha = odbc_exec($conexao, $query);
+	header('Location: /area/lista.php?retorno='.$refmsg);
 	exit;
 }
-
 ?>
 
 <body>
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
-    <?php echo $msg;?>
+
     <form class="form-horizontal" method="POST" action="/area/novo.php">
       
 			<div class="form-group">
@@ -39,8 +37,10 @@ if(isset($_POST['btnSubmit'])){
           <button type="submit" name="btnSubmit" class="btn btn-default">Enviar</button>
         </div>
       </div>
-    </form>
-  </div>
+    
+		</form>
+ 
+	</div>
 </div>
 
 </body>

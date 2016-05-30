@@ -7,23 +7,22 @@ require "../inc/menu.php";
 if (isset($_GET['cod'])){
 	
 	// Verifica nas tabelas relacionadas SE existe alguma Chave extrangeira Replicada na TABELA ASSUNTO
-	$query = 'SELECT COUNT(*) codArea FROM Assunto WHERE codArea = '.$_GET['cod'].'';
-	if ($res = odbc_exec($conexao,$query) > 0 ){
-		$removido = "O Codigo <b>".$_GET['cod']."</b> dessa Área está em uso para um Assunto já cadastado";
-		header("Location: /area/lista.php?retorno=".$removido);
+	$query = 'SELECT codArea FROM Assunto WHERE codArea = '.$_GET['cod'].'';
+	$res = odbc_exec($conexao,$query);
+	if (odbc_num_rows($res) > 0 ){
+		$refmsg = 3;
+		header('Location: /area/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
 		exit;
 	}
 
 	//Executa a AÇÃO do REMOVE correspondente ao COD.da ÁREA
 	$query = "DELETE FROM Area WHERE codArea = ".$_GET['cod'].";" ;
-	
-		if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
-			// $row = odbc_fetch_array($res);	
-			$removido = "Removido o ID <b>".$_GET['cod']."</b>";
-			$atualizalinha = odbc_exec($conexao, $query);
-			header("Location: /area/lista.php?retorno=".$removido);
-			exit;	
-		}
+	if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
+		$refmsg = 2;
+		$atualizalinha = odbc_exec($conexao, $query);
+		header('Location: /area/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+		exit;
+	}
 }
 
 ?>

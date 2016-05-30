@@ -2,20 +2,18 @@
 session_start();
 include "../config/conecta.php";
 require "../inc/cabecalho.html";
+require '../func/func_msg.php';
 ?>
-
 <body>
 <?php	require "../inc/menu.php"; ?>
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 		
-		<?php 
-		if (isset($_GET['retorno'])) {
-			echo "<p class='bg-success'>".$_GET['retorno']."</p>";
-		}
+		<?php
+			RetornoMSG( $_GET['retorno'] , $_GET['cod'] );
 		?>
-		
+	
     <table class='table table-bordered table-striped table-hover'>
       <thead>
         <th>Funcoes</th>
@@ -43,8 +41,6 @@ require "../inc/cabecalho.html";
     </table>
   </div>
 </div>
-
-
 
 </body>
 </html>

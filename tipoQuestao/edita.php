@@ -25,11 +25,10 @@ if(isset($_POST['btnSubmit'])){
 								SET	descricao = '".$Descricao."'
 							WHERE 
 								codTipoQuestao = '".$CodTipoQuestao."' ; ";
-
-		$update_ok = "Registro Alterado com sucesso.";
+		$refmsg = 2;
 		$atualizalinha = odbc_exec($conexao, $query);
-		header("Location: /tipoQuestao/lista.php?retorno=".$update_ok);
-		exit();
+		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$CodTipoQuestao);
+		exit;
 }
 
 ?>
@@ -37,10 +36,9 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
     
-		<?php echo $msg; ?>
-    
 		<form class="form-horizontal" method="POST" action="/tipoQuestao/edita.php" />
-      <input type="hidden" name="codTipoQuestao" value="<?php echo $CodTipoQuestao; ?>" />
+      
+		<input type="hidden" name="codTipoQuestao" value="<?php echo $CodTipoQuestao; ?>" />
 			
 			<div class="form-group">
         <label class="col-sm-2 control-label">Descricao</label>
@@ -54,7 +52,9 @@ if(isset($_POST['btnSubmit'])){
           <button type="submit" name="btnSubmit" class="btn btn-default">Enviar</button>
         </div>
       </div>
+
     </form>
+	
   </div>
 </div>
 

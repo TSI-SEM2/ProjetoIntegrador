@@ -2,8 +2,8 @@
 session_start();
 include "../config/conecta.php";
 require "../inc/cabecalho.html";
+require '../func/func_msg.php';
 ?>
-
 <body>
 <?php	require "../inc/menu.php"; ?>
 
@@ -11,9 +11,7 @@ require "../inc/cabecalho.html";
   <div class="col-md-offset-2 col-md-8 content-center">
 		
 		<?php 
-		if (isset($_GET['retorno'])) {
-			echo "<p class='bg-success'>".$_GET['retorno']."</p>";
-		}
+			RetornoMSG( $_GET['retorno'] , $_GET['cod'] );
 		?>
 		
     <table class='table table-bordered table-striped table-hover'>

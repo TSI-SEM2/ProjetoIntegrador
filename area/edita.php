@@ -25,12 +25,11 @@ if(isset($_POST['btnSubmit'])){
 		descricao = '$descricao'
 	WHERE 
 		codArea = $codArea;";
-	//exit($query);
-	$update_ok = "Registro Alterado com sucesso.";
+	
+	$refmsg = 2;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header("Location: /area/lista.php?retorno=".$update_ok);
+	header('Location: /area/lista.php?retorno='.$refmsg.'&cod='.$codArea);
 	exit;
-
 }
 
 ?>
@@ -39,23 +38,26 @@ if(isset($_POST['btnSubmit'])){
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
-    <?php echo $msg;?>
-    <form class="form-horizontal" method="POST" action="/area/edita.php">
-      <input type="hidden" name="codArea" value="<?php echo $codArea; ?>">
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Area</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" name="descricao" placeholder="Area" value="<?php echo $descricao; ?>" >
-        </div>
-      </div>
+		<form class="form-horizontal" method="POST" action="/area/edita.php">
 
-      <div class="form-group">
-        <div class="col-sm-6 content_center">
-          <button type="submit" name="btnSubmit" class="btn btn-default">Enviar</button>
-        </div>
-      </div>
-    </form>
+			<input type="hidden" name="codArea" value="<?php echo $codArea; ?>">
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Area</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" name="descricao" placeholder="Area" value="<?php echo $descricao; ?>" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-6 content_center">
+					<button type="submit" name="btnSubmit" class="btn btn-default">Enviar</button>
+				</div>
+			</div>
+
+		</form>
+		
   </div>
 </div>
 
