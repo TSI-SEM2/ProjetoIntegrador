@@ -37,18 +37,22 @@ if (isset($_SESSION['codProfessor'])) {	?>
 						<ul class="nav navbar-nav">
 						<!-- CRUD Area -->
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Area<b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Área<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="/area/lista.php">Listar</a></li>
-									<li><a href="/area/novo.php">Criar Novo</a></li>
+									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
+										<li><a href="/area/novo.php">Criar Novo</a></li>
+									<? } ?>
 								</ul>
 							</li>
 						<!-- CRUD Assunto -->
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Assunto <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Assunto<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="/assunto/lista.php">Listar</a></li>
-									<li><a href="/assunto/novo.php">Criar Novo</a></li>
+									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
+										<li><a href="/assunto/novo.php">Criar Novo</a></li>
+									<? } ?>
 								</ul>	
 							</li>
 						<!-- CRUD Tipo Questão -->	
@@ -56,15 +60,19 @@ if (isset($_SESSION['codProfessor'])) {	?>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tipo Questão<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="/tipoQuestao/lista.php">Listar</a></li>
-									<li><a href="/tipoQuestao/novo.php">Criar Novo</a></li>
+									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
+										<li><a href="/tipoQuestao/novo.php">Criar Novo</a></li>
+									<? } ?>
 								</ul>
 							</li>
 						<!-- CRUD Professor -->
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Professor <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professor<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="/professor/usuarios/lista.php">Listar</a></li>
-									<li><a href="/professor/usuarios/novo.php">Criar Novo</a></li>
+									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
+										<li><a href="/professor/usuarios/novo.php">Criar Novo</a></li>
+									<? } ?>
 								</ul>
 							</li>
 						
@@ -72,6 +80,7 @@ if (isset($_SESSION['codProfessor'])) {	?>
 				<!-- Lado superior do Menu com o campo de Identificação de quem estará logado e o Link para SAIR do Sistema -->							
 				<ul class="nav navbar-nav navbar-right">
 					<li><p class="navbar-text navbar-right"> Olá <?php echo $_SESSION['nomeProfessor']; ?> </p></li>
+					<li>&ensp;</li>
 					<li><a href="<?php $_SERVER['DOCUMENT_ROOT']; ?>/func/sair.php" >SAIR</a></li> <!-- Aqui definimos a um arquivo único referenciado para o Logoff destruindo a sessao -->
 						</ul>	
 				</nav>

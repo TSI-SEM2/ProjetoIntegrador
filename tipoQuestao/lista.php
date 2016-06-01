@@ -16,7 +16,9 @@ require '../func/func_msg.php';
 	
     <table class='table table-bordered table-striped table-hover'>
       <thead>
-        <th>Funcoes</th>
+        <?php if($_SESSION["tipoProfessor"] == "A"){ ?>
+        	<th>Funcoes</th>
+				<? } ?>
         <th>CodTipo Questao</th>
 			  <th>Descricao</th>
 			</thead>
@@ -24,15 +26,16 @@ require '../func/func_msg.php';
         $query = "SELECT * FROM TipoQuestao";
         if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
           while( $row = odbc_fetch_array($res) ) {
-					//print_r($row);
-						echo "<tr>
-									<td>
-									<a href='edita.php?cod=".$row['codTipoQuestao']."'<button type='button' class='btn btn-primary btn-sm'>Editar</button></a>
-									<a href='remove.php?cod=".$row['codTipoQuestao']."'<button type='button' class='btn btn-danger btn-sm'>Apagar</button></a>
-									</td>
-									<td>".$row['codTipoQuestao']."</td>
-									<td>".$row['descricao']."</td>
-								</tr>";
+						echo "<tr>";
+							if($_SESSION["tipoProfessor"] == "A") {
+								echo "<td>";
+									echo "<a href='edita.php?cod=".$row['codTipoQuestao']."'<button type='button' class='btn btn-primary btn-sm'>Editar</button></a>";
+									echo "<a href='remove.php?cod=".$row['codTipoQuestao']."'<button type='button' class='btn btn-danger btn-sm'>Apagar</button></a>";
+								echo "</td>";
+							}
+							echo "<td>".$row['codTipoQuestao']."</td>";
+							echo "<td>".$row['descricao']."</td>";
+						echo "</tr>";
 								
 					}
         }

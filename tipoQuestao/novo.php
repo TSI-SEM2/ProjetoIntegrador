@@ -8,14 +8,21 @@ if(isset($_POST['btnSubmit'])){
 
   $CodTipoQuestao = $_POST['codTipoQuestao'] ;
   $Descricao = $_POST['descricao'] ;
-  	
-  $query = "INSERT 	INTO TipoQuestao (codTipoQuestao,descricao)
-	          VALUES ('$CodTipoQuestao','$Descricao');" ;
-	
-	$refmsg = 1;
-	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /tipoQuestao/lista.php?retorno='.$refmsg);
-	exit;
+  
+	$valida = "SELECT codTipoQuestao FROM TipoQuestao WHERE codTipoQuestao = '".$_POST['codTipoQuestao']."'; ";
+	$valres = odbc_exec($conexao, $valida);
+	$valued = odbc_fetch_array ($valres);
+	if ($CodTipoQuestao == $valued['codTipoQuestao'] ){
+		$refmsg = 5;
+		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$CodTipoQuestao);
+	} else {
+		$query = "INSERT 	INTO TipoQuestao (codTipoQuestao,descricao)
+							VALUES ('$CodTipoQuestao','$Descricao');" ;	
+		$refmsg = 1;
+		$atualizalinha = odbc_exec($conexao, $query);
+		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg);
+		exit;
+	}
 }
 ?>
 
@@ -27,16 +34,16 @@ if(isset($_POST['btnSubmit'])){
 		<form class="form-horizontal" method="POST" action="/tipoQuestao/novo.php">
       
 			<div class="form-group">
-        <label class="col-sm-2 control-label">CodTipoQuestao</label>
+        <label class="col-sm-2 control-label">Código Tipo da Questao</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="codTipoQuestao">
+          <input type="text" class="form-control" name="codTipoQuestao" placeholder="Letra Correspondente">
         </div>
       </div>
       
 			<div class="form-group">
-        <label class="col-sm-2 control-label">Descricao</label>
+        <label class="col-sm-2 control-label">Descricao do Tipo da Questão</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="descricao" placeholder="Descricao">
+          <input type="text" class="form-control" name="descricao" placeholder="Descrição do Tipo Questão">
         </div>
       </div>
 

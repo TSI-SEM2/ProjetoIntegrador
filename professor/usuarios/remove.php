@@ -6,15 +6,28 @@ require "../../inc/menu.php";
 
 if (isset($_GET['cod'])){
 	
-	$query = "DELETE FROM Professor WHERE codProfessor = ".$_GET['cod'].";" ;
+	$query = 'SELECT codProfessor FROM Evento WHERE codProfessor = '.$_GET['cod'].'';
+	$res = odbc_exec($conexao,$query);
+	if (odbc_num_rows($res) > 0 ){
+		$refmsg = 3;
+		header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+		exit;
+	}
 	
+	$query = 'SELECT codProfessor FROM Questao WHERE codProfessor = '.$_GET['cod'].'';
+	$res = odbc_exec($conexao,$query);
+	if (odbc_num_rows($res) > 0 ){
+		$refmsg = 3;
+		header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+		exit;
+	}
+		
+	$query = "DELETE FROM Professor WHERE codProfessor = ".$_GET['cod'].";" ;
 	if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
-		// $row = odbc_fetch_array($res);	
-		$removido = "Removido o ID <b>".$_GET['cod']."</b>";
-		$atualizalinha = odbc_exec($conexao, $query);
-		header("Location: /professor/usuarios/lista.php?retorno=".$removido);
-	exit;	
-
+	$refmsg = 2;
+	$remove = odbc_exec($conexao, $query);
+	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+	exit;
 	}
 }
 
