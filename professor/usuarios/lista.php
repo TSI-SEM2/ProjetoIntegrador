@@ -19,7 +19,7 @@ require "../../func/func_msg.php";
       <thead>
         <?php if($_SESSION["tipoProfessor"] == "A"){ ?>
 					<th>Funções</th>
-				<? } ?>
+				<?php } ?>
         <th>Nome Do Usuário</th>
         <th>Email</th>
         <th>Id Senac</th>

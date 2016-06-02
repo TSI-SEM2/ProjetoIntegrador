@@ -1,23 +1,31 @@
-<?php require "../inc/cabecalho.html"; ?>
+<?php
+require "../inc/cabecalho.html";
+require "../func/func_msg.php";
+?>
+
 <body>
-<div class="container">
+    <div class="container">
+		<div class="header_pages">
+			<h3 class="text-muted">Login do Professor</h3>
+		</div>
 
-	<form class="form-signin" method="POST" action="../func/valida.php">
+		<hr>
+		
+		<div class="body_presentation">
+			<h4>Informe seus dados de acesso</h4>
+		
 		<?php
-			if (isset($_GET['erro'])) {
-				$msg = $_GET['erro'];
-				echo "<p class='alert'>$msg</p>";
-			}
+			RetornoMSG( $_GET['retorno'] , $_GET['cod'] );
+			LoginMSG( $_GET['erro']) ;
 		?>
-		<h2 class="form-signin-heading">Informe seus dados:</h2>
-		<label for="inputEmail" class="sr-only">Email</label>
-		<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-		<label for="inputPassword" class="sr-only">Senha</label>
-		<input type="password" name="senha" id="inputPassword" class="form-control" placeholder="Senha" required>
-		<button class="btn btn-lg btn-primary btn-block" name="btnSubmit" type="submit">Enviar</button>
-	</form>
-
-</div> <!-- /container -->
-
+		
+		<form method="POST" action="../func/valida.php">
+			<p>Email:  <input type="text" name="email"/></p>
+			<p>Senha:  <input type="password" name="senha"/></p>
+			<p><input type="submit" class="btn btn-mg btn-success" name="btnSubmit" value="Enviar" role="button"></input></p>
+		</form>
+	
+		</div>
+	</div>
 </body>
-</html>
+</html> 

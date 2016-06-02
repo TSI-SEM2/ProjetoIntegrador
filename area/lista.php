@@ -18,7 +18,7 @@ require '../func/func_msg.php';
       <thead>
 				<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
 					<th>Funções</th>
-				<? } ?>
+				<?php } ?>
         <th>Descrição</th>
 			</thead>
       <?php

@@ -1,12 +1,14 @@
 <?php   
-error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+//error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 if(!isset($_SESSION)) 
 	{ 
 		session_start(); 
 	} 
 
 if (!$_SESSION['showMenu']){
-	header("Location: /professor/login.php");
+	$refmsg = 2;
+	header ('Location: /professor/login.php?erro='.$refmsg);
+	exit;
 }
 if (isset($_SESSION['codProfessor'])) {	?>
 <body>
@@ -42,7 +44,7 @@ if (isset($_SESSION['codProfessor'])) {	?>
 									<li><a href="/area/lista.php">Listar</a></li>
 									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
 										<li><a href="/area/novo.php">Criar Novo</a></li>
-									<? } ?>
+									<?php } ?>
 								</ul>
 							</li>
 						<!-- CRUD Assunto -->
@@ -52,7 +54,7 @@ if (isset($_SESSION['codProfessor'])) {	?>
 									<li><a href="/assunto/lista.php">Listar</a></li>
 									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
 										<li><a href="/assunto/novo.php">Criar Novo</a></li>
-									<? } ?>
+									<?php } ?>
 								</ul>	
 							</li>
 						<!-- CRUD Tipo Questão -->	
@@ -62,7 +64,7 @@ if (isset($_SESSION['codProfessor'])) {	?>
 									<li><a href="/tipoQuestao/lista.php">Listar</a></li>
 									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
 										<li><a href="/tipoQuestao/novo.php">Criar Novo</a></li>
-									<? } ?>
+									<?php } ?>
 								</ul>
 							</li>
 						<!-- CRUD Professor -->
@@ -72,12 +74,12 @@ if (isset($_SESSION['codProfessor'])) {	?>
 									<li><a href="/professor/usuarios/lista.php">Listar</a></li>
 									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
 										<li><a href="/professor/usuarios/novo.php">Criar Novo</a></li>
-									<? } ?>
+									<?php } ?>
 								</ul>
 							</li>
 						
 						</ul>
-				<!-- Lado superior do Menu com o campo de Identificação de quem estará logado e o Link para SAIR do Sistema -->							
+				<!-- Lado superior do Menu com o campo de Identificação de quem estará logado e o Link para SAIR do Sistema -->
 				<ul class="nav navbar-nav navbar-right">
 					<li><p class="navbar-text navbar-right"> Olá <?php echo $_SESSION['nomeProfessor']; ?> </p></li>
 					<li>&ensp;</li>
@@ -97,7 +99,7 @@ if (isset($_SESSION['codProfessor'])) {	?>
 </html>
 <?php 
 } else {
-	$msg = "Você não está autenticado, realize o Login para administrar os dados do sistema → <b><a href='..'>Clique aqui</a></b>.";
-	return;
+	$refmsg = 2;
+	header ('Location: /professor/login.php?erro='.$refmsg);
 }
 ?>
