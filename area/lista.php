@@ -11,7 +11,9 @@ require '../func/func_msg.php';
   <div class="col-md-offset-2 col-md-8 content-center">
 		<!-- Sessão do código onde carregamos a informação de mensagens que são passadas via GET	-->	
 		<?php 
-			RetornoMSG( $_GET['retorno'] , $_GET['cod'] );
+			if (isset($_GET['retorno'])) {
+				RetornoMSG( $_GET['retorno'] , $_GET['cod'] ); 
+				}
 		?>
 		<!--  	-->
     <table class='table table-bordered table-striped table-hover '>

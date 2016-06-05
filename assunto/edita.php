@@ -11,23 +11,22 @@ if (isset($_GET['cod'])){
 	
 	if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
 		$row = odbc_fetch_array($res);
-		// dos dados retornados 
 		$codAssunto = $row['codAssunto'];
 		$descricao = $row['descricao'];
-		
 	}
 }
 
+//	Após envio do Formulário com as opções definidas, obtemos via POST os dados passados via formulário e redirecionamos a listagem após envio da informação para o Banco.
 if(isset($_POST['btnSubmit'])){
-  //exit(print_r($_POST));
-  $descricao = $_POST['descricao'];
+	$codAssunto = $_POST['codAssunto'];
+	$descricao = $_POST['descricao'];
 	$codArea = $_POST['codArea'];
-	
-  $query = "UPDATE Assunto 
+
+	$query = "UPDATE Assunto 
 						SET
 							descricao = '".$descricao."', codArea = ".$codArea."
 						WHERE 
-							codAssunto = $codAssunto";
+							codAssunto = ".$codAssunto." ; ";
 	$refmsg = 2;
 	$atualizalinha = odbc_exec($conexao, $query);
 	header('Location: /assunto/lista.php?retorno='.$refmsg.'&cod='.$codAssunto);

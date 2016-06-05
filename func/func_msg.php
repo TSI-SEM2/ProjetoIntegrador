@@ -3,10 +3,10 @@
 function LoginMSG ($erro) {	//Parametros retornados sendo: ERRO= 1,2...
 	switch ($erro){
 		case 1: // ERRO DE LOGIN
-			$msg = '<p class="bg-danger"> ERRO: Você informou um Usuário ou Senha que é Inválido. </p>';
+			$msg = '<p class="bg-danger"> Usuário ou Senha inválidos </p>';
 			break;
 		case 2: // NÃO LOGADO
-			$msg = '<p class="bg-warning"> Você não está logado! Forneça suas credenciais abaixo para acesso ao sistema.  </p>';
+			$msg = '<p class="bg-warning"> Você não está logado! Realize o login abaixo  </p>';
 			break;
 	}
 	echo $msg; //FIM DA FUNÇÃO.

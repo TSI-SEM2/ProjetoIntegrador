@@ -12,7 +12,9 @@ require '../func/func_msg.php';
   <div class="col-md-offset-2 col-md-8 content-center">
 		
 		<?php 
-			RetornoMSG( $_GET['retorno'] , $_GET['cod'] );
+			if (isset($_GET['retorno'])) {
+				RetornoMSG( $_GET['retorno'] , $_GET['cod'] ); 
+				}
 		?>
 		
    <table class='table table-bordered table-striped table-hover'>
