@@ -28,8 +28,33 @@ require "../../func/func_msg.php";
         <th>Tipo De Acesso</th>
 			</thead>
       <?php
+				
+				$qtd_registros_por_pagina = 10;
+				$qtd_paginas = 1;
+				/* Recebe o número da página via parâmetro na URL */
+				$pagina_atual = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
+			
+				/* Obtem quantidade de registos no banco */
+				$query = "SELECT count(codProfessor) as qtd_professor FROM Professor";
+        if (!$res = odbc_exec($conexao,$query)) {/* error */} else{
+					if( $row = odbc_fetch_array($res) ) {
+						$qtd_registros = $row['qtd_professor'];
+					}
+				}
+				/* Cálcula qual será a última página */ 
+				$qtd_paginas = ceil($qtd_registros / $qtd_registros_por_pagina);
 
-        $query = "SELECT * FROM Professor";
+				/* Cálcula qual será a página anterior em relação a página atual em exibição */ 
+				$pagina_anterior = ($pagina_atual > 1) ? $pagina_atual -1 : 1;
+
+				/* Cálcula qual será a pŕoxima página em relação a página atual em exibição */ 
+				$proxima_pagina = ($pagina_atual < $qtd_paginas) ? $pagina_atual +1 : $qtd_paginas; 
+			
+				$query = "WITH Paginado AS ";
+				$query .= "(SELECT ROW_NUMBER() OVER(ORDER BY codProfessor ASC) AS linha, codProfessor, idSenac, tipo, nome, email FROM Professor)";
+				$query .= "SELECT TOP (".$qtd_registros_por_pagina.") codProfessor, idSenac, tipo, nome, email ";
+				$query .= "FROM Paginado ";
+				$query .= "WHERE linha > ".$qtd_registros_por_pagina." * ({$pagina_atual} - 1)"; 
         if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
           while( $row = odbc_fetch_array($res) ) {
             if($row['email'] == 'claro@usp.br'){//correcao do erro de excluir o adm principal
@@ -61,6 +86,13 @@ require "../../func/func_msg.php";
 
       ?>
     </table>
+		<nav>
+			<ul class="pagination pagination ">
+				<li><a href="./lista.php?pag=<?= $pagina_anterior; ?>" role="button" aria-label="anterior"><span aria-hidden="true">anterior</span></a></li>
+				<li><a href="#">página <?= $pagina_atual; ?> de <?= $qtd_paginas; ?></a></li>
+				<li><a href="./lista.php?pag=<?= $proxima_pagina; ?>" role="button" aria-label="próxima"><span aria-hidden="true">próxima</span></a></li> 
+			</ul>
+		</nav>
   </div>
 </div>
 
