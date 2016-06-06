@@ -2,6 +2,7 @@
 session_start(); 
 include "../../config/conecta.php";
 require "../../inc/cabecalho.html";
+require	"../../func/func_msg.php";
 require "../../inc/menu.php";
 
 if (isset($_GET['cod'])){
@@ -55,7 +56,11 @@ if(isset($_POST['btnSubmit'])){ // Caso selecionado o Radio Button em SIM para a
 
 		<form class="form-horizontal" method="POST" action="/professor/usuarios/edita.php">
 			<input type="hidden" name="codProfessor" value="<?php echo $codProfessor; ?>">
-
+				<?php 
+				if (isset($_GET['retorno'])) {
+					RetornoMSG( $_GET['retorno'] , $_GET['cod'] ); 
+				}
+				?>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Nome</label>
 					<div class="col-sm-4">
@@ -73,7 +78,7 @@ if(isset($_POST['btnSubmit'])){ // Caso selecionado o Radio Button em SIM para a
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Senha</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" name="senha" placeholder="Email" value="<?php echo $senha; ?>">
+						<a href="/professor/usuarios/alterasenha.php?cod=<?php echo $codProfessor; ?>"><button type="button" class="btn btn-info form-control">Clique aqui para alterar a senha</button></a>
 					</div>
 				</div>
 				

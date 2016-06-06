@@ -151,9 +151,10 @@ body{
 }
 
 
-/* ASSUNTO */
+/* BOTOES IDENTIDADE VISUAL */
 
-.alinhamento {
-	text-align: right; 
-	padding-top: 10px;
+.btn-info .btn-primary {
+	color: #385965;
+    background-color: #00BBD4;
+    border-color: #00BBD4;
 }
