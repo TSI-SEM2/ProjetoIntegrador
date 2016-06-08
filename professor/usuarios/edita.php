@@ -5,7 +5,7 @@ require "../../inc/cabecalho.html";
 require	"../../func/func_msg.php";
 require "../../inc/menu.php";
 
-if ($_SESSION['tipo'] != 'A'){
+if ($_SESSION["tipoProfessor"] != 'A'){
 	$refmsg = 4;
 	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
 }
