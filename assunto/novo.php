@@ -18,7 +18,7 @@ if(isset($_POST['btnSubmit'])){
 	
 	$refmsg = 1;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /assunto/lista.php?retorno='.$refmsg);
+	header('Location: /assunto/lista.php?retorno='.$refmsg.'&cod=0');
 	exit;
 }
 ?>

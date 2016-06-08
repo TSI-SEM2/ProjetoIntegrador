@@ -13,17 +13,17 @@ require "../../inc/menu.php";
 
 if(isset($_POST['btnSubmit'])){
 
-  $nome = $_POST['nome'] ;
-  $email = $_POST['email'] ;
-  $senha = $_POST['senha'] ;
-  $idsenac = $_POST['idsenac'] ;
+	$nome = $_POST['nome'] ;
+	$email = $_POST['email'] ;
+	$senha = $_POST['senha'] ;
+	$idsenac = $_POST['idsenac'] ;
 	$tipo = $_POST['tipoacesso'] ;
 	
-  $query = "INSERT 	INTO Professor (nome,email,senha,idsenac,tipo)
+	$query = "INSERT 	INTO Professor (nome,email,senha,idsenac,tipo)
 	          VALUES ('$nome','$email', HASHBYTES('SHA1','$senha'), '$idsenac' ,'$tipo');" ;
 	$refmsg = 1;
 	$inserelinha = odbc_exec($conexao, $query);
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$codArea);
+	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
 	exit;
 }
 

@@ -18,7 +18,7 @@ if(isset($_POST['btnSubmit'])){
 	//	As linhas sequenciais que finalizam esse bloco , definem a informação de exito retornando para a página de listagem com essa confirmação.
 	$refmsg = 1;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /area/lista.php?retorno='.$refmsg);
+	header('Location: /area/lista.php?retorno='.$refmsg.'&cod=0');
 	exit;
 }
 ?>

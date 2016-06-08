@@ -18,24 +18,25 @@ require "../../func/func_msg.php";
 		?>
 		
     <table class='table table-bordered table-striped table-hover'>
-      <thead>
-        <?php if($_SESSION["tipoProfessor"] == "A"){ ?>
-					<th>Funções</th>
-				<?php } ?>
-        <th>Nome Do Usuário</th>
-        <th>Email</th>
-        <th>Id Senac</th>
-        <th>Tipo De Acesso</th>
-			</thead>
-      <?php
-				
-				$qtd_registros_por_pagina = 10;
-				$qtd_paginas = 1;
-				/* Recebe o número da página via parâmetro na URL */
-				$pagina_atual = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
-			
-				/* Obtem quantidade de registos no banco */
-				$query = "SELECT count(codProfessor) as qtd_professor FROM Professor";
+		<thead>
+			<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
+			<th>Funções</th>
+			<?php } ?>
+			<th>Nome Do Usuário</th>
+			<th>Email</th>
+			<th>Id Senac</th>
+			<th>Tipo De Acesso</th>
+		</thead>
+		
+		<?php
+		$qtd_registros_por_pagina = 10;
+		$qtd_paginas = 1;
+		/* Recebe o número da página via parâmetro na URL */
+		$pagina_atual = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
+	
+		/* Obtem quantidade de registos no banco */
+		$query = "SELECT count(codProfessor) as qtd_professor FROM Professor";
+		
         if (!$res = odbc_exec($conexao,$query)) {/* error */} else{
 					if( $row = odbc_fetch_array($res) ) {
 						$qtd_registros = $row['qtd_professor'];
