@@ -4,6 +4,11 @@ include "../config/conecta.php";
 require "../inc/cabecalho.html";
 require "../inc/menu.php";
 
+if ($_SESSION['tipo'] != 'A'){
+	$refmsg = 4;
+	header('Location: /area/lista.php?retorno='.$refmsg.'&cod=0');
+}
+
 if(isset($_POST['btnSubmit'])){
 	//	Bloco iniciado com base nos dados enviados por POST
   $codArea = $_POST['codArea'] ;

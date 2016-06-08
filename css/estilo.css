@@ -92,7 +92,10 @@ body{
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
     color: #385965;
 }
-
+.dropdown-menu {
+	padding: 5px 0;
+	background-color: #B7C3C0;
+}
 
 
 /*   REDUZIDO  */
@@ -109,6 +112,12 @@ body{
 }
 .navbar-inverse .navbar-ex1-collapse .collapsed .navbar-toggle .icon-bar {
     background-color: #B7C3C0;
+}
+/*@media all and (min-width:768px)*/
+.navbar-text {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 

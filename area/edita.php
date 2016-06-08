@@ -5,6 +5,11 @@ require "../inc/cabecalho.html";
 require "../inc/menu.php";
 require "../func/func_msg.php";
 
+if ($_SESSION['tipo'] != 'A'){
+	$refmsg = 4;
+	header('Location: /area/lista.php?retorno='.$refmsg.'&cod=0');
+}
+
 if (isset($_GET['cod'])){
 	// Sessão onde buscamos o Cod correspondente ao item escolido
 	$query = "SELECT * FROM Area WHERE codArea = ".$_GET['cod'].";" ;

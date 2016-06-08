@@ -4,6 +4,11 @@ include "../config/conecta.php";
 require "../inc/cabecalho.html";
 require "../inc/menu.php";
 
+if ($_SESSION['tipo'] != 'A'){
+	$refmsg = 4;
+	header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
+}
+
 if (isset($_GET['cod'])){
 	
 	$query = "SELECT * FROM TipoQuestao WHERE codTipoQuestao = '".$_GET['cod']."' ; " ;

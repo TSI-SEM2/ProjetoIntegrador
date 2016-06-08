@@ -4,6 +4,11 @@ include "../config/conecta.php";
 require "../inc/cabecalho.html";
 require "../inc/menu.php";
 
+if ($_SESSION['tipo'] != 'A'){
+	$refmsg = 4;
+	header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
+}
+
 if (isset($_GET['cod'])){
 	// Verifica nas tabelas relacionadas SE existe alguma Chave extrangeira Replicada na TABELA = QUESTAO
 	$query = " SELECT codTipoQuestao FROM Questao WHERE codTipoQuestao = '".$_GET['cod']."'; ";

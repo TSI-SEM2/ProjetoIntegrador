@@ -4,6 +4,11 @@ include "../config/conecta.php";
 require "../inc/cabecalho.html";
 require "../inc/menu.php";
 
+if ($_SESSION['tipo'] != 'A'){
+	$refmsg = 4;
+	header('Location: /assunto/lista.php?retorno='.$refmsg.'&cod=0');
+}
+
 if(isset($_POST['btnSubmit'])){  
 	$descricao = $_POST['descricao'] ;
 	$codarea = $_POST['codArea'];
