@@ -49,12 +49,12 @@ require '../func/func_msg.php';
 	
 		$query = "WITH Paginado AS ";
 		$query .= "(SELECT ROW_NUMBER() OVER(ORDER BY codArea ASC) AS linha, codArea, descricao FROM Area)";
-		$query .= "SELECT TOP (".$qtd_registros_por_pagina.") codArea,  descricao' ";
+		$query .= "SELECT TOP (".$qtd_registros_por_pagina.") codArea,  descricao ";
 		$query .= "FROM Paginado ";
 		$query .= "WHERE linha > ".$qtd_registros_por_pagina." * ({$pagina_atual} - 1)";
 		
 		// Na montagem da tabela, cada resultado pela query definida até o item final (dado na query) . 
-        $query = "SELECT * FROM Area";
+
         if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
           while( $row = odbc_fetch_array($res) ) {
 						echo "<tr>";

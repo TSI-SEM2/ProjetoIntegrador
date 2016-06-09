@@ -4,11 +4,6 @@ include "../config/conecta.php";
 require "../inc/cabecalho.html";
 require "../inc/menu.php";
 
-if ($_SESSION["tipoProfessor"] != 'A'){
-	$refmsg = 4;
-	header('Location: /assunto/lista.php?retorno='.$refmsg.'&cod=0');
-}
-
 //	Aqui se recebe a referencia do codigo via GET para trazer do banco a correspondência exata.
 if (isset($_GET['cod'])){
  

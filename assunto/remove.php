@@ -4,11 +4,6 @@ include "../config/conecta.php";
 require "../inc/cabecalho.html";
 require "../inc/menu.php";
 
-if ($_SESSION["tipoProfessor"] != 'A'){
-	$refmsg = 4;
-	header('Location: /assunto/lista.php?retorno='.$refmsg.'&cod=0');
-}
-
 if (isset($_GET['cod'])){
 	
 		$query = 'SELECT codAssunto FROM EventoAssunto WHERE codAssunto = '.$_GET['cod'].'';

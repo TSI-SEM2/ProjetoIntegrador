@@ -11,17 +11,15 @@ require '../func/func_msg.php';
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 		
-		<?php 
-			if (isset($_GET['retorno'])) {
-				RetornoMSG( $_GET['retorno'] , $_GET['cod'] ); 
-				}
-		?>
+	<?php 
+		if (isset($_GET['retorno'])) {
+			RetornoMSG( $_GET['retorno'] , $_GET['cod'] ); 
+			}
+	?>
 		
 	<table class='table table-bordered table-striped table-hover'>
 		<thead>
-		<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
         	<th>Funcoes</th>
-		<?php } ?>
 			<th>Descricao</th>
 		</thead>
 		
@@ -56,12 +54,10 @@ require '../func/func_msg.php';
 		if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
           while( $row = odbc_fetch_array($res) ) {
 						echo '<tr>';
-							if($_SESSION["tipoProfessor"] == "A") {
 								echo '<td>';
-									echo '<a href="edita.php?cod='.$row['codAssunto'].'"<button type="button" class="btn btn-primary btn-sm">Editar</button></a>';
+									echo '<a href="edita.php?cod='.$row['codAssunto'].'"<button type="button" class="btn btn-primary btn-sm">Editar</button></a> ';
 									echo '<a href="remove.php?cod='.$row['codAssunto'].'"<button type="button" class="btn btn-danger btn-sm">Apagar</button></a>';
 								echo '</td>';
-							}
 							echo '<td>'.$row['descricao'].'</td>';
 						echo '</tr>';
 					}
