@@ -83,7 +83,7 @@ if(isset($_POST['btnSubmit'])){ // Caso selecionado o Radio Button em SIM para a
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Senha</label>
 					<div class="col-sm-4">
-						<a href="/professor/usuarios/alterasenha.php?cod=<?php echo $codProfessor; ?>"><button type="button" class="btn btn-info form-control">Clique aqui para alterar a senha</button></a>
+						<a href="/professor/usuarios/alterasenha.php?cod=<?php echo $codProfessor; ?>"><button type="button" class="btn btn-primary form-control">Clique aqui para alterar a senha</button></a>
 					</div>
 				</div>
 				
@@ -110,7 +110,7 @@ if(isset($_POST['btnSubmit'])){ // Caso selecionado o Radio Button em SIM para a
 
 				<div class="form-group">
 					<div class="col-sm-6 content_center">
-						<button type="submit" name="btnSubmit" class="btn btn-default">Enviar</button>
+						<button type="submit" name="btnSubmit" class="btn btn-primary">Enviar</button>
 					</div>
 				</div>
 			</form>

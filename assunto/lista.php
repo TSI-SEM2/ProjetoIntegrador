@@ -10,7 +10,16 @@ require '../func/func_msg.php';
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
-		
+	
+	<div class="pull-right">
+		<form method="GET" action="/assunto/lista.php">
+			<input type="text" name="busca" class="pesquisafsm-caixa" placeholder="Procure aqui...." value="<?=(isset($_GET["busca"]))?$_GET["busca"]:"" ;?>" />
+			<input type="submit" class="pesquisafsm-botao" value="Buscar">
+		</form>
+	</div>
+	
+	<div class="clearfix" > </div>
+	
 	<?php 
 		if (isset($_GET['retorno'])) {
 			RetornoMSG( $_GET['retorno'] , $_GET['cod'] ); 
@@ -31,6 +40,8 @@ require '../func/func_msg.php';
 
 		/* Obtem quantidade de registos no banco */
 		$query = "SELECT count(codAssunto) as qtd_assunto FROM Assunto";
+		if(isset($_GET["busca"])) $query .= " WHERE descricao like '".$_GET['busca']."%'";
+
 		if (!$res = odbc_exec($conexao,$query)) {/* error */} else{
 			if( $row = odbc_fetch_array($res) ) {
 				$qtd_registros = $row['qtd_assunto'];
@@ -46,7 +57,10 @@ require '../func/func_msg.php';
 		$proxima_pagina = ($pagina_atual < $qtd_paginas) ? $pagina_atual +1 : $qtd_paginas; 
 	
 		$query = "WITH Paginado AS ";
-		$query .= "(SELECT ROW_NUMBER() OVER(ORDER BY codAssunto ASC) AS linha, codAssunto, descricao, codArea FROM Assunto)";
+		$query .= "(";
+			$query .= "SELECT ROW_NUMBER() OVER(ORDER BY codAssunto ASC) AS linha, codAssunto, descricao, codArea FROM Assunto";
+			if(isset($_GET["busca"])) $query .= " WHERE descricao like '".$_GET['busca']."%'";
+		$query .= ")";
 		$query .= "SELECT TOP (".$qtd_registros_por_pagina.") codAssunto,  descricao, codArea ";
 		$query .= "FROM Paginado ";
 		$query .= "WHERE linha > ".$qtd_registros_por_pagina." * ({$pagina_atual} - 1)"; 
@@ -66,15 +80,13 @@ require '../func/func_msg.php';
     </table>
 	<nav>
 		<ul class="pagination pagination ">
-			<li><a href="./lista.php?pag=<?= $pagina_anterior; ?>" role="button" aria-label="anterior"><span aria-hidden="true">anterior</span></a></li>
-			<li><a href="#">página <?= $pagina_atual; ?> de <?= $qtd_paginas; ?></a></li>
-			<li><a href="./lista.php?pag=<?= $proxima_pagina; ?>" role="button" aria-label="próxima"><span aria-hidden="true">próxima</span></a></li> 
+			<li><a href="./lista.php?pag=<?php echo $pagina_anterior; ?><?php echo (isset($_GET["busca"]))?"&busca=".$_GET["busca"]:"";?>" role="button" aria-label="anterior"><span aria-hidden="true">anterior</span></a></li>
+			<li><a href="#">página <?php echo $pagina_atual; ?> de <?php echo $qtd_paginas; ?></a></li>
+			<li><a href="./lista.php?pag=<?php echo $proxima_pagina; ?><?php echo (isset($_GET["busca"]))?"&busca=".$_GET["busca"]:"";?>" role="button" aria-label="próxima"><span aria-hidden="true">próxima</span></a></li> 
 		</ul>
 	</nav>	
   </div>
 </div>
-
-
 
 </body>
 </html>

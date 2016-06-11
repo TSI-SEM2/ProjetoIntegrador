@@ -60,7 +60,7 @@ require '../func/func_msg.php';
 						echo "<tr>";
 							if($_SESSION["tipoProfessor"] == "A") {
 								echo "<td>";
-									echo "<a href='edita.php?cod=".$row['codArea']."'<button type='button' class='btn btn-primary btn-sm'>Editar</button></a>";
+									echo "<a href='edita.php?cod=".$row['codArea']."'<button type='button' class='btn btn-primary btn-sm'>Editar</button></a> ";
 									echo "<a href='remove.php?cod=".$row['codArea']."'<button type='button' class='btn btn-danger btn-sm'>Apagar</button></a>";
 								echo "</td>";
 							}

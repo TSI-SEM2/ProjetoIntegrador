@@ -38,12 +38,9 @@ body{
 }
 
 .content-center {
-	padding-top:45px;
-	padding-bottom:45px;
+	padding-bottom:15px;
 	text-align: center;
 }
-
-
  
  /*  MENU  TOPO  */
 .navbar-inverse .navbar-brand {
@@ -162,8 +159,59 @@ body{
 
 /* BOTOES IDENTIDADE VISUAL */
 
-.btn-info .btn-primary {
-	color: #385965;
-    background-color: #00BBD4;
-    border-color: #00BBD4;
+.btn-primary, .btn-default {
+    color: #B7C3C0;
+    background-color: #385965;
+    border-color: #385965;
+}
+.btn-primary:hover, .btn-default:hover {
+    color: #00DDB4;
+    background-color: #385965;
+    border-color: #385965;
+}
+.btn-primary:active, .btn-default:active {
+    color: #00DDB4;
+    background-color: #385965;
+    border-color: #385965;
+}
+.btn-primary:focus, .btn-default:focus {
+    color: #00DDB4;
+    background-color: #385965;
+    border-color: #385965;
+}
+
+/*	BUSCA	*/
+.pesquisafsm-caixa { 
+	background: #eee;
+	padding:10px; 
+	border-radius:10px 0 0 10px;
+	border:0 none;
+	width:150px; 
+}
+.pesquisafsm-botao { 
+	border: 1px solid #222; 
+	padding-left:10px;
+	padding-top:10px; 
+	background: #385965;
+	border-radius: 6px;
+	margin-left: -3px; 
+	color:#B7C3C0;
+	font: ‘trebuchet ms’, trebuchet; 
+	padding:10px 20px;
+	border-radius:0 10px 10px 0;
+	border:0 none;
+	font-weight:bold;
+} 
+.pesquisafsm-botao:hover {
+	border: 2px solid #bbb;
+	padding-left:8px; 
+	padding-top:8px;
+	background: #385965;
+	border-radius: 6px;
+	margin-left: -3px; 
+	color: #00DDB4;
+	font: ‘trebuchet ms’, trebuchet; 
+	padding:8px 18px;
+	border-radius:0 10px 10px 0;
+	font-weight:bold; 
 }
