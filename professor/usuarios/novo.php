@@ -3,7 +3,7 @@ session_start();
 	
 if($_SESSION["tipoProfessor"] != "A"){
 	$refmsg = 4;
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg);
+	header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg);
 	exit;
 }
 
@@ -23,7 +23,7 @@ if(isset($_POST['btnSubmit'])){
 	          VALUES ('$nome','$email', HASHBYTES('SHA1','$senha'), '$idsenac' ,'$tipo');" ;
 	$refmsg = 1;
 	$inserelinha = odbc_exec($conexao, $query);
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
 	exit;
 }
 
@@ -34,7 +34,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 
-		<form class="form-horizontal" method="POST" action="/professor/usuarios/novo.php">
+		<form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/professor/usuarios/novo.php">
       
 			<div class="form-group">
         <label class="col-sm-2 control-label">Nome</label>

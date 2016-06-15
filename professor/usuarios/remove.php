@@ -6,7 +6,7 @@ require "../../inc/menu.php";
 
 if ($_SESSION["tipoProfessor"] != 'A'){
 	$refmsg = 4;
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
 }
 
 if (isset($_GET['cod'])){
@@ -15,7 +15,7 @@ if (isset($_GET['cod'])){
 	$res = odbc_exec($conexao,$query);
 	if (odbc_num_rows($res) > 0 ){
 		$refmsg = 3;
-		header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+		header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
 		exit;
 	}
 	
@@ -23,7 +23,7 @@ if (isset($_GET['cod'])){
 	$res = odbc_exec($conexao,$query);
 	if (odbc_num_rows($res) > 0 ){
 		$refmsg = 3;
-		header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+		header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
 		exit;
 	}
 		
@@ -31,7 +31,7 @@ if (isset($_GET['cod'])){
 	if (!$res = odbc_exec($conexao,$query)) { /* error */} else{
 	$refmsg = 2;
 	$remove = odbc_exec($conexao, $query);
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
+	header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$_GET['cod']);
 	exit;
 	}
 }

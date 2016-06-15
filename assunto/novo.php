@@ -13,7 +13,7 @@ if(isset($_POST['btnSubmit'])){
 	
 	$refmsg = 1;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /assunto/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/assunto/lista.php?retorno='.$refmsg.'&cod=0');
 	exit;
 }
 ?>
@@ -23,7 +23,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 
-    <form class="form-horizontal" method="POST" action="/assunto/novo.php">
+    <form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/assunto/novo.php">
       
 			<div class="form-group">
         <label class="col-sm-2 control-label">Descrição : </label>

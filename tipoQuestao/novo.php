@@ -6,7 +6,7 @@ require "../inc/menu.php";
 
 if ($_SESSION["tipoProfessor"] != 'A'){
 	$refmsg = 4;
-	header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
 }
 
 if(isset($_POST['btnSubmit'])){
@@ -19,13 +19,13 @@ if(isset($_POST['btnSubmit'])){
 	$valued = odbc_fetch_array ($valres);
 	if ($CodTipoQuestao == $valued['codTipoQuestao'] ){
 		$refmsg = 5;
-		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$CodTipoQuestao);
+		header('Location: '.$basedir.'/tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$CodTipoQuestao);
 	} else {
 		$query = "INSERT 	INTO TipoQuestao (codTipoQuestao,descricao)
 							VALUES ('$CodTipoQuestao','$Descricao');" ;	
 		$refmsg = 1;
 		$atualizalinha = odbc_exec($conexao, $query);
-		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
+		header('Location: '.$basedir.'/tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
 		exit;
 	}
 }
@@ -36,7 +36,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
 	<div class="col-md-offset-2 col-md-8 content-center">
 		
-		<form class="form-horizontal" method="POST" action="/tipoQuestao/novo.php">
+		<form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/tipoQuestao/novo.php">
 			
 			<div class="form-group">
 			<label class="col-sm-2 control-label">Código Tipo da Questao</label>

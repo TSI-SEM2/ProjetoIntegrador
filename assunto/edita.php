@@ -29,7 +29,7 @@ if(isset($_POST['btnSubmit'])){
 							codAssunto = ".$codAssunto." ; ";
 	$refmsg = 2;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /assunto/lista.php?retorno='.$refmsg.'&cod='.$codAssunto);
+	header('Location: '.$basedir.'/assunto/lista.php?retorno='.$refmsg.'&cod='.$codAssunto);
 	exit;
 }
 
@@ -40,7 +40,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 
-		<form class="form-horizontal" method="POST" action="/assunto/edita.php">
+		<form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/assunto/edita.php">
     
 			<input type="hidden" name="codAssunto" value="<?php echo $codAssunto; ?>">
 			

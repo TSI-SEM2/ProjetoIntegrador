@@ -7,7 +7,7 @@ require "../../inc/menu.php";
 
 if ($_SESSION["tipoProfessor"] != 'A'){
 	$refmsg = 4;
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg.'&cod=0');
 }
 
 if (isset($_GET['cod'])){
@@ -48,7 +48,7 @@ if(isset($_POST['btnSubmit'])){ // Caso selecionado o Radio Button em SIM para a
 	//	As linhas sequenciais que finalizam esse bloco , definem a informação de exito retornando para a página de listagem com essa confirmação.
 	$refmsg = 2;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$codProfessor);
+	header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg.'&cod='.$codProfessor);
 	exit;
 }
 
@@ -59,7 +59,7 @@ if(isset($_POST['btnSubmit'])){ // Caso selecionado o Radio Button em SIM para a
 <div class="row">
 	<div class="col-md-offset-2 col-md-8 content-center">
 
-		<form class="form-horizontal" method="POST" action="/professor/usuarios/edita.php">
+		<form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/professor/usuarios/edita.php">
 			<input type="hidden" name="codProfessor" value="<?php echo $codProfessor; ?>">
 				<?php 
 				if (isset($_GET['retorno'])) {
@@ -83,7 +83,7 @@ if(isset($_POST['btnSubmit'])){ // Caso selecionado o Radio Button em SIM para a
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Senha</label>
 					<div class="col-sm-4">
-						<a href="/professor/usuarios/alterasenha.php?cod=<?php echo $codProfessor; ?>"><button type="button" class="btn btn-primary form-control">Clique aqui para alterar a senha</button></a>
+						<a href="/2A/professor/usuarios/alterasenha.php?cod=<?php echo $codProfessor; ?>"><button type="button" class="btn btn-primary form-control">Clique aqui para alterar a senha</button></a>
 					</div>
 				</div>
 				

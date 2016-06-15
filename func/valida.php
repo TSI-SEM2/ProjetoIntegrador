@@ -1,6 +1,9 @@
 <?php
 require "../config/conecta.php";
 session_start();
+include('../integracao/loginFunc.php');
+lidaBasicAuthentication ('../../portal/naoautorizado.php');
+
 
 if(isset($_POST['btnSubmit'])){   //verifica se foi pressionado o botão de submit do formulário que o chamou.
 

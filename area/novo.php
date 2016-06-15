@@ -6,7 +6,7 @@ require "../inc/menu.php";
 
 if ($_SESSION["tipoProfessor"] != 'A'){
 	$refmsg = 4;
-	header('Location: /area/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/area/lista.php?retorno='.$refmsg.'&cod=0');
 }
 
 if(isset($_POST['btnSubmit'])){
@@ -18,7 +18,7 @@ if(isset($_POST['btnSubmit'])){
 	//	As linhas sequenciais que finalizam esse bloco , definem a informação de exito retornando para a página de listagem com essa confirmação.
 	$refmsg = 1;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /area/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/area/lista.php?retorno='.$refmsg.'&cod=0');
 	exit;
 }
 ?>
@@ -28,7 +28,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 
-    <form class="form-horizontal" method="POST" action="/area/novo.php">
+    <form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/area/novo.php">
       
 			<div class="form-group">
         <label class="col-sm-2 control-label">Área</label>

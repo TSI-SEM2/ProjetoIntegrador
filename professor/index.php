@@ -8,12 +8,12 @@ require "../func/func_msg.php";
 <body>
 
 <?php	
-
+//die('test');
 if (isset($_SESSION['showMenu'])){
 	require "../inc/menu.php"; 
 } else {
-	$refmsg = 1;
-	header ( 'Location: /professor/login.php?erro='.$refmsg.'&cod=');
+	$refmsg = 2;
+	header ( 'Location: '.$basedir.'/professor/login.php?erro='.$refmsg.'&cod=');
 	exit;
 }	
 
@@ -47,7 +47,7 @@ if (isset($_SESSION['showMenu'])){
 
 		
 		</table>
-		<a class="btn btn-lg btn-primary" href="/professor/usuarios/lista.php" role="button">Clique para ver a lista de Professores</a>
+		<a class="btn btn-lg btn-primary" href="<?php echo $basedir; ?>/professor/usuarios/lista.php" role="button">Clique para ver a lista de Professores</a>
 	</p>
 	</div>
 

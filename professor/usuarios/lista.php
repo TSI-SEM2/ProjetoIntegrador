@@ -13,7 +13,7 @@ require "../../func/func_msg.php";
 	<div class="col-md-offset-2 col-md-8 content-center">
 	
 		<div class="pull-right">
-			<form method="GET" action="/professor/usuarios/lista.php">
+			<form method="GET" action="<?php echo $basedir;?>/professor/usuarios/lista.php">
 				<input type="text" name="busca" class="pesquisafsm-caixa" placeholder="Procure aqui...." value="<?=(isset($_GET["busca"]))?$_GET["busca"]:"" ;?>" />
 				<input type="submit" class="pesquisafsm-botao" value="Buscar">
 			</form>

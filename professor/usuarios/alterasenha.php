@@ -2,7 +2,7 @@
 session_start(); 
 if($_SESSION["tipoProfessor"] != "A"){
 	$refmsg = 4;
-	header('Location: /professor/usuarios/lista.php?retorno='.$refmsg);
+	header('Location: '.$basedir.'/professor/usuarios/lista.php?retorno='.$refmsg);
 	exit;
 }
 
@@ -32,7 +32,7 @@ if(isset($_POST['btnSubmit'])){
 					codProfessor = ".$codProfessor." ; ";
 	$refmsg = 2;
 	$inserelinha = odbc_exec($conexao, $query);
-	header('Location: /professor/usuarios/edita.php?retorno='.$refmsg.'&cod='.$codProfessor);
+	header('Location: '.$basedir.'/professor/usuarios/edita.php?retorno='.$refmsg.'&cod='.$codProfessor);
 	exit;
 }
 
@@ -43,7 +43,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 
-	<form class="form-horizontal" method="POST" action="/professor/usuarios/alterasenha.php">
+	<form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/professor/usuarios/alterasenha.php">
 			<input type="hidden" name="codProfessor" value="<?php echo $codProfessor; ?>">
 
 			<div class="form-group">

@@ -7,7 +7,7 @@ if(!isset($_SESSION))
 
 if (!$_SESSION['showMenu']){
 	$refmsg = 2;
-	header ('Location: /professor/login.php?erro='.$refmsg);
+	header ('Location: '.$basedir.'/professor/login.php?erro='.$refmsg);
 	exit;
 }
 if (isset($_SESSION['codProfessor'])) {	?>
@@ -24,7 +24,7 @@ if (isset($_SESSION['codProfessor'])) {	?>
 
 				<nav class="navbar navbar-inverse">
 					<!-- Link para a página INICIAL do Sistema -->
-					<a class="navbar-brand" href="<?php $_SERVER['DOCUMENT_ROOT']; ?>/professor"><b>Administração</a></b>
+					<a class="navbar-brand" href="<?php echo $basedir;?>/professor"><b>Administração</a></b>
 					<!-- Menu reduzido de acordo com a Responsividade -->
 					<div class="navbar-header sm-well">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -41,9 +41,9 @@ if (isset($_SESSION['codProfessor'])) {	?>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Área<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/area/lista.php">Listar</a></li>
+									<li><a href="<?php echo $basedir;?>/area/lista.php">Listar</a></li>
 									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
-										<li><a href="/area/novo.php">Criar Novo</a></li>
+										<li><a href="<?php echo $basedir;?>/area/novo.php">Criar Novo</a></li>
 									<?php } ?>
 								</ul>
 							</li>
@@ -51,9 +51,9 @@ if (isset($_SESSION['codProfessor'])) {	?>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Assunto<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/assunto/lista.php">Listar</a></li>
+									<li><a href="<?php echo $basedir;?>/assunto/lista.php">Listar</a></li>
 									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
-										<li><a href="/assunto/novo.php">Criar Novo</a></li>
+										<li><a href="<?php echo $basedir;?>/assunto/novo.php">Criar Novo</a></li>
 									<?php } ?>
 								</ul>	
 							</li>
@@ -61,19 +61,16 @@ if (isset($_SESSION['codProfessor'])) {	?>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tipo Questão<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/tipoQuestao/lista.php">Listar</a></li>
-									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
-										<li><a href="/tipoQuestao/novo.php">Criar Novo</a></li>
-									<?php } ?>
+									<li><a href="<?php echo $basedir;?>/tipoQuestao/lista.php">Listar</a></li>
 								</ul>
 							</li>
 						<!-- CRUD Professor -->
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Professor<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/professor/usuarios/lista.php">Listar</a></li>
+									<li><a href="<?php echo $basedir;?>/professor/usuarios/lista.php">Listar</a></li>
 									<?php if($_SESSION["tipoProfessor"] == "A"){ ?>
-										<li><a href="/professor/usuarios/novo.php">Criar Novo</a></li>
+										<li><a href="<?php echo $basedir;?>/professor/usuarios/novo.php">Criar Novo</a></li>
 									<?php } ?>
 								</ul>
 							</li>
@@ -83,7 +80,7 @@ if (isset($_SESSION['codProfessor'])) {	?>
 				<ul class="nav navbar-nav navbar-right">
 					<li><p class="navbar-text navbar-right"> Olá <?php echo $_SESSION['nomeProfessor']; ?> </p></li>
 					<li>&ensp;</li>
-					<li><a href="<?php $_SERVER['DOCUMENT_ROOT']; ?>/func/sair.php" >SAIR</a></li> <!-- Aqui definimos a um arquivo único referenciado para o Logoff destruindo a sessao -->
+					<li><a href="<?php echo $basedir;?>/func/sair.php" >SAIR</a></li> <!-- Aqui definimos a um arquivo único referenciado para o Logoff destruindo a sessao -->
 						</ul>	
 				</nav>
 
@@ -100,6 +97,6 @@ if (isset($_SESSION['codProfessor'])) {	?>
 <?php 
 } else {
 	$refmsg = 2;
-	header ('Location: /professor/login.php?erro='.$refmsg);
+	header ('Location: '.$basedir.'/professor/login.php?erro='.$refmsg);
 }
 ?>

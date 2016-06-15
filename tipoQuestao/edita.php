@@ -6,7 +6,7 @@ require "../inc/menu.php";
 
 if ($_SESSION["tipoProfessor"] != 'A'){
 	$refmsg = 4;
-	header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/tipoQuestao/lista.php?retorno='.$refmsg.'&cod=0');
 }
 
 if (isset($_GET['cod'])){
@@ -32,7 +32,7 @@ if(isset($_POST['btnSubmit'])){
 								codTipoQuestao = '".$CodTipoQuestao."' ; ";
 		$refmsg = 2;
 		$atualizalinha = odbc_exec($conexao, $query);
-		header('Location: /tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$CodTipoQuestao);
+		header('Location: '.$basedir.'/tipoQuestao/lista.php?retorno='.$refmsg.'&cod='.$CodTipoQuestao);
 		exit;
 }
 
@@ -41,7 +41,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
     
-		<form class="form-horizontal" method="POST" action="/tipoQuestao/edita.php" />
+		<form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/tipoQuestao/edita.php" />
       
 		<input type="hidden" name="codTipoQuestao" value="<?php echo $CodTipoQuestao; ?>" />
 			

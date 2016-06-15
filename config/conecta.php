@@ -1,4 +1,5 @@
 <?php
+$basedir = "/2A";
 /* http://php.net/manual/en/function.odbc-connect.php */
 $connection_string = 'DRIVER={SQL Server};SERVER=koo2dzw5dy.database.windows.net;DATABASE=SenaQuiz'; 
 $user = 'TSI'; 

@@ -7,7 +7,7 @@ require "../func/func_msg.php";
 
 if ($_SESSION["tipoProfessor"] != 'A'){
 	$refmsg = 4;
-	header('Location: /area/lista.php?retorno='.$refmsg.'&cod=0');
+	header('Location: '.$basedir.'/area/lista.php?retorno='.$refmsg.'&cod=0');
 }
 
 if (isset($_GET['cod'])){
@@ -32,7 +32,7 @@ if(isset($_POST['btnSubmit'])){
 	//	As linhas sequenciais que finalizam esse bloco , definem a informação de exito retornando para a página de listagem com essa confirmação.
 	$refmsg = 2;
 	$atualizalinha = odbc_exec($conexao, $query);
-	header('Location: /area/lista.php?retorno='.$refmsg.'&cod='.$codArea);
+	header('Location: '.$basedir.'/area/lista.php?retorno='.$refmsg.'&cod='.$codArea);
 	exit;
 }
 
@@ -43,7 +43,7 @@ if(isset($_POST['btnSubmit'])){
 <div class="row">
   <div class="col-md-offset-2 col-md-8 content-center">
 
-		<form class="form-horizontal" method="POST" action="/area/edita.php">
+		<form class="form-horizontal" method="POST" action="<?php echo $basedir;?>/area/edita.php">
 			<input type="hidden" name="codArea" value="<?php echo $codArea; ?>">
 			<!-- Início do Bloco com a informação principal do obtido na tela anterior 	-->
 			<div class="form-group">
